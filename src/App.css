@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+:root {
+    --tile-size: 100px;
+    --dark-tile: #729551;
+    --light-tile: #ececd0;
+    --bg-color : #020618;
+}
+
+body{
+    background-color: var(--bg-color);
+}
+
+@media all and (max-width : 450px) {
+    :root {
+        --tile-size: 50px;
+    }
+}
