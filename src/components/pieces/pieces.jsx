@@ -9,11 +9,10 @@ const Pieces = () => {
     const [position,setState] = useState(helpPosition())
 
     const calDrop = (e) => {
-        console.log(e.dataTransfer.getData("text"));
+        const [p,rank,file] = e.dataTransfer.getData("text").split(",");
+        console.log(p,rank,file);
         (e) => e.preventDefault();
     }
-
-
     return(
         <>
             <div className="pieces absolute inset-0 grid grid-cols-8 grid-rows-8 " 
