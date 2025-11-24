@@ -3,6 +3,11 @@ export const character = file => String.fromCharCode(96+file);
 export const helpPosition = () =>{
     const position = new Array(8).fill("").map(x=> new Array(8).fill(""));
 
+    for(let i=0;i<8;i++){
+        position [6][i] = "bp";
+        position [1][i] = "wp";
+    }
+
     //black pieces//
     position [7][0] = "br";
     position [7][1] = "bn";
@@ -13,16 +18,6 @@ export const helpPosition = () =>{
     position [7][6] = "bn";
     position [7][7] = "br";
 
-    //black pawns//
-    position [6][0] = "bp";
-    position [6][1] = "bp";
-    position [6][2] = "bp";
-    position [6][3] = "bp";
-    position [6][4] = "bp";
-    position [6][5] = "bp";
-    position [6][6] = "bp";
-    position [6][7] = "bp";
-
     //white pieces//
     position [0][0] = "wr";
     position [0][1] = "wn";
@@ -32,17 +27,19 @@ export const helpPosition = () =>{
     position [0][5] = "wb";
     position [0][6] = "wn";
     position [0][7] = "wr";
-
-    //white pawns//
-    position [1][0] = "wp";
-    position [1][1] = "wp";
-    position [1][2] = "wp";
-    position [1][3] = "wp";
-    position [1][4] = "wp";
-    position [1][5] = "wp";
-    position [1][6] = "wp";
-    position [1][7] = "wp";
-
-    console.log(position);
+    
     return position;
+}
+
+export const copyPosition = (position) =>{
+
+    const newPosition = new Array(8).fill("").map(x=> new Array(8).fill(""));
+
+    for(let rank=0; rank<8; rank++){
+        for(let file=0; file<8; file++){
+            newPosition [rank][file] = position[rank][file];
+        }
+    }
+    console.log(newPosition);
+    return newPosition;
 }

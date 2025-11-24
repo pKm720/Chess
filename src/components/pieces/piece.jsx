@@ -7,9 +7,10 @@ const Piece = ({rank,file,piece}) => {
         setTimeout(()=>{
             e.target.style.display="none";
         },0);
+    }
 
-        // e.dataTransfer.setDragImage(_, 0, 0);
-        // console.log(e);
+    const onDragEnd = e => {
+        e.target.style.display = "block";
     }
 
     return(
@@ -17,6 +18,7 @@ const Piece = ({rank,file,piece}) => {
             <div className={`piece ${piece} p-${rank}${file} absolute h-20 w-20 bg-cover cursor-grab active:cursor-grabbing`} 
             draggable={true} 
             onDragStart={oneDragStart}
+            onDragEnd={onDragEnd}
             />
         </>
     );
