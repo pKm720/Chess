@@ -1,8 +1,11 @@
-import getRookMoves from "./getMoves"
+import {getKnightmoves, getRookMoves} from "./getMoves"
 
 const aribiter = {
     getRegularMoves : function({position,rank,file,piece}){
-        return getRookMoves({position,rank,file,piece})
+        if(piece.endsWith("r"))
+            return getRookMoves({position,rank,file,piece})
+        if(piece.endsWith("n"))
+            return getKnightmoves({position,rank,file})
     }
 }
 

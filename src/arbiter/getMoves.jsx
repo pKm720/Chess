@@ -1,4 +1,4 @@
-const getRookMoves = ({position,rank,file,piece}) => {
+export const getRookMoves = ({position,rank,file,piece}) => {
         const moves = [];
         const us = piece[0];
         const enemy = us === "w" ? "b" : "w";
@@ -28,4 +28,24 @@ const getRookMoves = ({position,rank,file,piece}) => {
         })
         return moves;
 }
-export default getRookMoves;
+export const getKnightmoves = ({position,rank,file}) => {
+    let moves = [];
+    const enemy = position[rank][file].startsWith("w") ? "b" : "w";
+
+    const possibleMoves = [
+        [-1,2],
+        [1,2],
+        [2,1],
+        [2,-1],
+        [-1,-2],
+        [1,-2],
+        [-2,1],
+        [-2,-1]
+    ]
+    possibleMoves.forEach(c => {
+        const cell = position?.[rank+c[0]]?.[file+c[1]]
+        if(cell !== undefined &&(cell.startsWith(enemy)||cell === ""))
+            moves.push([rank+c[0],file+c[1]])
+    })
+    return moves;
+}

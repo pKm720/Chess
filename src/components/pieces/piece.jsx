@@ -20,7 +20,6 @@ const Piece = ({rank,file,piece}) => {
         },0);
         if (turn === piece[0]){ 
             const pieceMoves = aribiter.getRegularMoves({position:currentPosition,rank,file,piece});
-            console.log(pieceMoves);
             dispatch(getCandidateMoves({pieceMoves}));
         }
     }
