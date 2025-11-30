@@ -3,10 +3,10 @@ export const character = file => String.fromCharCode(96+file);
 export const helpPosition = () =>{
     const position = new Array(8).fill("").map(x=> new Array(8).fill(""));
 
-    for(let i=0;i<8;i++){
-        position [6][i] = "bp";
-        position [1][i] = "wp";
-    }
+    // for(let i=0;i<8;i++){
+    //     position [6][i] = "bp";
+    //     position [1][i] = "wp";
+    // }
 
     //black pieces//
     position [7][0] = "br";
@@ -40,6 +40,6 @@ export const copyPosition = (position) =>{
             newPosition [rank][file] = position[rank][file];
         }
     }
-    console.log(newPosition);
+    // console.log(newPosition);
     return newPosition;
 }

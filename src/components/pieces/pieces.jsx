@@ -3,10 +3,14 @@ import Piece from "./piece";
 import "./pieces.css"
 import { copyPosition} from "../../helper";
 import { useAppContext } from "../../contexts/context";
-import { makeNewMove } from "../../reducer/actions/move";
+import { makeNewMove, resetCandidateMoves } from "../../reducer/actions/move";
+import moveAudio from "../../assets/audio/move-self.mp3"; 
 
 
 const Pieces = () => {
+
+    const moveSound = new Audio(moveAudio);
+    moveSound.preload = 'auto';
     
     const ref = useRef();
 
@@ -29,10 +33,18 @@ const Pieces = () => {
 
         const [p,rank,file] = e.dataTransfer.getData("text").split(",");
 
-        newPosition[rank][file] = '';
-        newPosition[x][y] = p;
+        if ((appState.candidateMoves?.find(m => m[0]===x && m[1]===y))){
 
-        dispatch(makeNewMove({newPosition}));
+            newPosition[rank][file] = '';
+            newPosition[x][y] = p;
+
+            dispatch(makeNewMove({newPosition}));
+            moveSound.currentTime = 0;
+            moveSound.play().catch(error => {
+                console.error('Audio playback failed:', error);
+            });
+        }
+        dispatch(resetCandidateMoves());
     }
     return(
         <>

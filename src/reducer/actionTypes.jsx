@@ -1,3 +1,5 @@
 export const actionTypes = {
-    "NEW_MOVE" : "NEW_MOVE"
+    "RESET_CANDIDATE_MOVES" : "RESET_CANDIDATE_MOVES",
+    "GET_CANDIDATE_MOVES" : "GET_CANDIDATE_MOVES",
+    "NEW_MOVE" : "NEW_MOVE",
 }

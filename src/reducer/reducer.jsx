@@ -19,6 +19,21 @@ export const reducer = (state,action) => {
             }
         }
 
+        case actionTypes.GET_CANDIDATE_MOVES : {
+            
+            return {
+                ...state,
+                candidateMoves:action.payload.pieceMoves
+            }
+        }
+        
+        case actionTypes.RESET_CANDIDATE_MOVES : {
+            return {
+                ...state,
+                candidateMoves: []
+            }
+        }
+
         default:
             return state;
     }
