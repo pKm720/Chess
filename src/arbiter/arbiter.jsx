@@ -1,4 +1,4 @@
-import {getBishopMoves, getKingMoves, getKnightmoves, getQueenMoves, getRookMoves} from "./getMoves"
+import {getBishopMoves, getKingMoves, getKnightmoves, getPawnCapture, getPawnMoves, getQueenMoves, getRookMoves} from "./getMoves"
 
 const aribiter = {
     getRegularMoves : function({position,rank,file,piece}){
@@ -12,6 +12,11 @@ const aribiter = {
             return getKnightmoves({position,rank,file})
         if(piece.endsWith("q"))
             return getQueenMoves({position,rank,file,piece})
+        if(piece.endsWith("p"))
+            return [
+                    ...getPawnMoves({position,rank,file,piece}),
+                    ...getPawnCapture({position,rank,file,piece})
+                ]
     }
 }
 
